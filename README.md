@@ -14,3 +14,4 @@ Abra [http://localhost:3000](http://localhost:3000)
 - Axios para requisições
 - ChartsJS - Para renderizar os gráficos
 - Metodologia BEM para organizar o código
+- React-Bootstrap
