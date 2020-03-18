@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ export default function ChartBar () {
   const [label, setLabel] = useState([]);
   const [data, setData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://private-afe609-testefront.apiary-mock.com/anual-result")
       .then(result => {
@@ -24,7 +24,6 @@ export default function ChartBar () {
           {
             label: '',
             backgroundColor: '#03A9F4',
-            //borderColor: '#03A9F4',
             borderWidth: 1,
             hoverBackgroundColor: '#03A9F4',
             hoverBorderColor: '#03A9F4',

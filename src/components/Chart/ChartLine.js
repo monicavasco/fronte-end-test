@@ -1,23 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 
 export default function App() {
   const [label, setLabel] = useState();
-
   const [today, setToday] = useState([]);
-  const [today2, setToday2] = useState([]);
-  React.useEffect(() => {
+  const [yesterday, setYesterday] = useState([]);
+  
+ useEffect(() => {
     axios
       .get("https://private-afe609-testefront.apiary-mock.com/time-data")
       .then(result => {
-        setLabel(
-          Object.keys(result.data.today).map(
-            key => result.data.today[key].label
-          )
-        );
+        setLabel(Object.keys(result.data.today).map(key => result.data.today[key].label));
         setToday(result.data.today.map(today => today.value));
-        setToday2(result.data.yesterday.map(today => today.value));
+        setYesterday(result.data.yesterday.map(today => today.value));
       });
   }, []);
 
@@ -45,7 +41,7 @@ export default function App() {
               borderWidth: 1,
               hoverBackgroundColor: "#BF3FFF",
               hoverBorderColor: "#BF3FFF",
-              data: today2,
+              data: yesterday,
               lineTension: 0,
               
             }

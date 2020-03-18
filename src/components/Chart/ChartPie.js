@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pie } from "react-chartjs-2";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ export default function ChartPie () {
   const [label, setLabel] = useState([]);
   const [data, setData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://private-afe609-testefront.apiary-mock.com/anual-percentage")
       .then(result => {
